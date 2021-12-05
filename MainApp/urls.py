@@ -9,5 +9,6 @@ app_name = 'MainApp'
 # the name of our view will be index so that is what we will also name our html file
 urlpatterns = [
     path('',views.index, name='index'),
+    path('pizzas', views.pizzas, name='pizzas'),
 ]
 
