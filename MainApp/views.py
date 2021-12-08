@@ -22,3 +22,13 @@ def pizzas(request):
     return render(request, 'MainApp/pizzas.html', context) #this will populate the data on the template to render it to the browser
 
 
+def pizza(request,pizza_id):
+    #just like we did in MyShell.py
+    pizza = Pizza.objects.get(id=pizza_id)
+    #FK can be accessed using '_set'
+    toppings = pizza.topping_set.all()
+    context = {'pizza':pizza, 'toppings': toppings}
+
+    return render(request, 'MainApp/pizza.html', context)
+
+
