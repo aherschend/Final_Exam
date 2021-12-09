@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .forms import ToppingForm
+from .forms import CommentsForm
 from .models import Pizza, Topping
 
 # Create your views here.
@@ -32,24 +32,24 @@ def pizza(request,pizza_id):
     return render(request, 'MainApp/pizza.html', context)
 
 
-def new_topping(request, pizza_id):
+def new_comment(request, pizza_id):
     pizza = Pizza.objects.get(id=pizza_id)
     if request.method != 'POST':
-        form = ToppingForm()
+        form = CommentsForm()
     else:
-        form = ToppingForm(data=request.POST)
+        form = CommentsForm(data=request.POST)
 
         if form.is_valid():
             # when we call save(), we include the argument commit = False to tell Django to create
             # a new topping object and assign it to new_topping without saving it
-            new_topping = form.save(commit=False)
-            new_topping.pizza = pizza
-            new_topping.save()
+            new_comment = form.save(commit=False)
+            new_comment.pizza = pizza
+            new_comment.save()
             form.save()
             return redirect('MainApp:pizza', pizza_id=pizza_id)
 
     context = {'form': form, 'pizza': pizza}
-    return render(request, 'MainApp/new_topping.html', context)
+    return render(request, 'MainApp/new_comment.html', context)
 
 
 
