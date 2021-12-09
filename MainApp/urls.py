@@ -10,6 +10,7 @@ app_name = 'MainApp'
 urlpatterns = [
     path('',views.index, name='index'),
     path('pizzas', views.pizzas, name='pizzas'),
-    path('pizza/<int:pizza_id>/', views.pizza, name='pizza')
+    path('pizza/<int:pizza_id>/', views.pizza, name='pizza'),
+    path('new_topping/<int:pizza_id/',views.new_topping, name='new_topping')
 ]
 
