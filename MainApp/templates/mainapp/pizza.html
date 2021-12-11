@@ -2,8 +2,12 @@
 
 {% block content %}
 
-<p>Pizza: {{ pizza }}</p>
 
+
+<p><strong>Pizza:</strong>  {{ pizza }}</p>
+
+
+<h4> Toppings:</h4>
 <ul>
     {% for topping in toppings %} 
 
@@ -12,14 +16,24 @@
     </li>
     {% empty%} 
     <li> There are no toppings on this pizza.</li>
-
     {% endfor %}
 
 </ul>
 
+<h4>Customer Comments:</h4>
+<ul>
+    {% for comment in comments %} 
+    <li>
+        <p>{{ comment.text }} </p>
+    </li>
+    {% empty %} 
+    <li> There are no comments for this pizza. </li>
+</ul>
+
 <p> 
-    <a href="{% url 'MainApp:new_comment' pizza.id %}"> Add a new topping</a>
+    <a href="{% url 'MainApp:new_comment' pizza.id %}"> Add a new comment</a>
 </p>
 
-{% endblock content %} z
+{% endfor %} 
+{% endblock content %} 
 
