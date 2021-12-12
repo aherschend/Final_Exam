@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import widgets
 
-from .models import Comment
+from .models import Comment, Pizza, Topping
 
 class CommentsForm(forms.ModelForm):
     class Meta:

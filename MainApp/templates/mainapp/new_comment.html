@@ -9,10 +9,11 @@
 <form action="{% url 'MainApp:new_comment' pizza.id %}" method='post'>
 
     {% csrf_token %} 
+    
     {{ form.as_p }}
 
     <button name="submit">Add Comment</button>
 </form>
 
-{% endblock content %} z
+{% endblock content %} 
 

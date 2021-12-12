@@ -12,7 +12,7 @@
     {% for topping in toppings %} 
 
     <li>
-        <p>{{ topping.name }} </p>
+        <p>{{ topping.text }} </p>
     </li>
     {% empty%} 
     <li> There are no toppings on this pizza.</li>
@@ -22,18 +22,19 @@
 
 <h4>Customer Comments:</h4>
 <ul>
-    {% for comment in comments %} 
+    {% for comments in comment %} 
     <li>
-        <p>{{ comment.text }} </p>
+        <p>{{ comments.text }} </p>
     </li>
     {% empty %} 
     <li> There are no comments for this pizza. </li>
+    {% endfor %}
 </ul>
 
 <p> 
-    <a href="{% url 'MainApp:new_comment' pizza.id %}"> Add a new comment</a>
+    <a href="{% url 'MainApp:new_comment' pizza.id %}">Add a new comment</a>
 </p>
 
-{% endfor %} 
+
 {% endblock content %} 
 

@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from .forms import CommentsForm
-from .models import Pizza, Topping
+from .models import Pizza, Topping, Comment
 
 # Create your views here.
 
@@ -34,6 +34,7 @@ def pizza(request,pizza_id):
 
 def new_comment(request, pizza_id):
     pizza = Pizza.objects.get(id=pizza_id)
+
     if request.method != 'POST':
         form = CommentsForm()
     else:
