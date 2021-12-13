@@ -4,8 +4,7 @@
 
 
 
-<p><strong>Pizza:</strong>  {{ pizza }}</p>
-
+<p><strong>Pizza:</strong>  {{ pizza }} </p>
 
 <h4> Toppings:</h4>
 <ul>
@@ -18,13 +17,18 @@
     <li> There are no toppings on this pizza.</li>
     {% endfor %}
 
+{% if pizza.pizza_photo %}
+<img src="{{ pizza.pizza_photo.url }}" class="img-thumbnail" style="max-height: height 100px" alt="">
+{% endif %} 
+
+
 </ul>
 
 <h4>Customer Comments:</h4>
 <ul>
-    {% for comments in comment %} 
+    {% for comment in comments %} 
     <li>
-        <p>{{ comments.text }} </p>
+        <p>{{ comment.text }} </p>
     </li>
     {% empty %} 
     <li> There are no comments for this pizza. </li>
