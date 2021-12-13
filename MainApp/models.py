@@ -5,7 +5,7 @@ from django.db import models
 class Pizza(models.Model):
     text = models.CharField(max_length = 200)
     date_added = models.DateTimeField(auto_now_add=True)
-    pizza_photo = models.ImageField(null=True, blank=True, upload_to='images/')
+    header_image = models.ImageField(null=True, blank=True, upload_to='images/')
 
     # str method allows us to say whatever it is we want to say without it just putting
     # the type of object
