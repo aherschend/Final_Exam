@@ -1,16 +1,17 @@
 {% extends 'MainApp/base.html' %}
 
-{% block content %}
-<p>Pizzas</p>
+{% block page_header %} 
+<h1>Pizzas</h1>
+{% endblock page_header %} 
 
-<ul>
+{% block content %} 
+<ul style="color:white;">
     {% for pizza in pizzas %} 
-
-    <li>
-        <a href="{% url 'MainApp:pizza' pizza.id %}">{{ pizza }}</a>
-    </li>
+        <li><h3>
+            <a href="{% url 'MainApp:pizza' pizza.id %}"> {{ pizza }}</a>
+        </li></h3>
     {% empty%} 
-    <li> No pizzas have been created yet.</li>
+        <li><h3>No pizzas have been created yet.</h3></li>
     {% endfor %}
 
 </ul>

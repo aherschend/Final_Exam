@@ -1,38 +1,40 @@
 {% extends 'MainApp/base.html' %}
 
+{% block page_header %}
+    <h3>{{ Pizza }}</h3>
+{% endblock page_header %} 
+
 {% block content %}
 
-
-
-<p><strong>Pizza:</strong>  {{ pizza }} </p>
-
-<h4> Toppings:</h4>
-<ul>
+<h1 style="color:white;">{{ pizza }}</h1>
+<h3>
+<p> Toppings:</p>
+</h3>
     {% for topping in toppings %} 
 
-    <li>
-        <p>{{ topping.text }} </p>
-    </li>
-    {% empty%} 
-    <li> There are no toppings on this pizza.</li>
-    {% endfor %}
-</ul>
+    <p>{{ topping.text }} </p>
 
+{% empty%} 
+<li> There are no toppings on this pizza.</li>
+{% endfor %}
 {% if pizza.header_image %}
-<img src="{{ pizza.header_image.url }}" class="img-thumbnail" style="max-height: height 100px" alt="">
+<img src="{{ pizza.header_image.url }}" class="img-thumbnail" width="400" height="350"/>
 {% endif %} 
 
 
-<h4>Customer Comments:</h4>
-<ul>
-    {% for comment in comments %} 
-    <li>
-        <p>{{ comment.text }} </p>
-    </li>
-    {% empty %} 
-    <li> There are no comments for this pizza. </li>
-    {% endfor %}
-</ul>
+<h4 style="color:white;">Customer Comments:</h4>
+{% for comment in comments %} 
+    <div class="card mb-3">
+        <h4 class="card-header">
+            {{ comment.date_added | date:'M d, Y H:i' }}
+        </h4>
+        <div class="card-body">
+            {{ comment.text | linebreaks }}
+        </div>
+    </div>
+{% empty %} 
+    <p> There are no comments for this pizza. </p>
+{% endfor %}
 
 <p> 
     <a href="{% url 'MainApp:new_comment' pizza.id %}">Add a new comment</a>
