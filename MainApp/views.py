@@ -27,7 +27,8 @@ def pizza(request,pizza_id):
     pizza = Pizza.objects.get(id=pizza_id)
     #FK can be accessed using '_set'
     toppings = pizza.topping_set.all()
-    context = {'pizza':pizza, 'toppings': toppings}
+    comments = pizza.comment_set.all()
+    context = {'pizza':pizza, 'toppings': toppings, 'comments':comments}
 
     return render(request, 'MainApp/pizza.html', context)
 
